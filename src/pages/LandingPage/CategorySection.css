@@ -1,0 +1,35 @@
+.items-section-wrapper {
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  margin: 10px;
+  background-color: whitesmoke;
+  height: auto;
+  /* height: auto; */
+}
+
+h3 {
+  margin: 2px;
+  padding: 2px;
+}
+
+/* .grid-container::-webkit-scrollbar {
+    display: none;
+  } */
+
+.grid-items {
+  /* background-color: brown; */
+  /* background-color: #9cd8f7e0; */
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  /* padding-bottom: 20px; */
+  /* font-size: 30px;
+    text-align: center; */
+  /* height: 350px; */
+  margin: 15px;
+  display: flex;
+  overflow-x: scroll;
+  /* align-items: center;
+    justify-content: center; */
+}
+
+.item-card-wrapper {
+  margin: 15px;
+}

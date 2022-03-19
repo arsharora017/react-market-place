@@ -1,0 +1,10 @@
+body {
+  /* Colors */
+  --color-primary: rgb(6, 67, 6);
+  --color-secondary: rgb(59, 46, 112);
+
+  /* Font Sizes */
+  --font-size-large: 18px;
+  --font-size-medium: 16px;
+  --font-size-small: 14px;
+}

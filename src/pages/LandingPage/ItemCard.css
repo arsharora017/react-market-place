@@ -1,0 +1,90 @@
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  /* margin: 1px; */
+}
+
+.btn-cart {
+  display: block;
+  width: 80%;
+}
+
+/* .wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+  gap: 2rem;
+  justify-content: center;
+
+} */
+
+.card {
+  overflow: auto;
+  box-shadow: 0 2px 10px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transition 200ms easy-in;
+  min-width: 250px;
+  width: max-content;
+  max-width: 460px;
+  align-items: center;
+  padding: 20px;
+}
+
+.card__image {
+  height: 330px;
+  width: auto;
+  margin: 7px;
+  /* object-fit: cover; */
+}
+
+.title-price-wrapper {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.card__title {
+  text-align: left;
+  font-weight: bold;
+}
+
+.card__price {
+  text-align: end;
+  font-weight: bold;
+}
+
+.card__writer {
+  text-align: left;
+  font-weight: lighter;
+  padding-left: 10px;
+}
+
+.card__btn {
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1rem;
+  border: 2px solid;
+  background: transparent;
+  color: rgb(191, 132, 22);
+  border-radius: 1rem;
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card:hover .card__btn {
+  background: green;
+  color: white;
+}
