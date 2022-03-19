@@ -8,7 +8,7 @@ const SignIn = () => {
 
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredPasswordTouched, setEnteredPasswordTouched] = useState(false);
-  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;
+
   const enteredEmailIsValid = enteredEmail.includes("@");
 
   const enteredPasswordIsValid = enteredPassword.length >= 8;
