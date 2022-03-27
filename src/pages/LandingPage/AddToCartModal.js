@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "../../components/UI/Modal";
 
 import classes from "./AddToCartModal.module.css";
@@ -10,18 +10,15 @@ const AddToCartModal = (props) => {
   const { item } = props;
 
   const cartCtx = useContext(CartContext);
-  // Current item: {id: 32s}
-  // Cart context items: [{id: ads}, {id: 32s}, {id: asd2}]
+
   const existingItem = cartCtx.items.find((i) => i.id === item.id);
   const [qty, setQty] = useState(existingItem ? existingItem.qty : 1);
 
   // Total Amount = Item Price X Qty
   const totalAmount = `$${(item.price * qty).toFixed(2)}`;
 
-  const addItemCartHandler = () => {
+  const addCartItemHandler = () => {
     cartCtx.addItem({ ...item, qty: qty });
-
-    // console.log(qty);
   };
 
   return (
@@ -31,13 +28,13 @@ const AddToCartModal = (props) => {
       </button>
       <CartItem item={item} qty={qty} setQty={setQty} />
       <div className={classes.total}>
-        <span>Total Amount</span>
+        <span>Total Amount:</span>
         <span>{totalAmount}</span>
       </div>
       <div className={classes.actions}>
         <SecondaryButtonOutline
           onClick={() => {
-            addItemCartHandler();
+            addCartItemHandler();
             props.onClose();
           }}
           text="Add to Cart"

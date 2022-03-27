@@ -18,74 +18,44 @@ const reducer = (state, action) => {
       (item) => item.id === action.payload.id
     );
 
-    console.log(existingCartItem);
-
     if (existingCartItem) {
+      // console.log(existingCartItem);
       existingCartItem.qty = action.payload.qty;
 
       const newState = { ...state, items: state.items };
-      console.log("updated state: ", newState);
+
       return newState;
     } else {
       const itemToAdd = action.payload;
+
       const newItems = [...state.items, itemToAdd];
 
       const newState = {
         ...state,
         items: newItems,
       };
-
-      console.log(newState);
-
       return newState;
     }
-
-    // const itemToAdd = action.payload;
-    // const newItems = [...state.items, itemToAdd];
-
-    // const newState = {
-    //   ...state,
-    //   items: newItems,
-    // };
-
-    // console.log(newState);
-
-    // return newState;
   }
 
-  // switch (action.type) {
-  //   case ADD_ITEM:
+  if (action.type === REMOVE_ITEM) {
+    console.log("Looking for Item with ID: ", action.payload.id);
+    console.log(state.items);
+    const existingCartItem = state.items.find(
+      (item) => item.id === action.payload
+    );
 
-  //     const itemToAdd = action.payload;
-  //     const newItems = [...state.items, itemToAdd];
+    console.log(existingCartItem);
 
-  //     const newState = {
-  //       ...state,
-  //       items: newItems,
-  //     };
+    if (existingCartItem) {
+      const newItems = state.items.filter((item) => item.id !== action.payload);
+      const newState = { ...state, items: newItems };
 
-  //     return newState;
-
-  //   case REMOVE_ITEM:
-  //     const id = action.payload;
-  //     const existingItem = state.items.find((item) => item.id === id);
-  //     if (existingItem) {
-  //       // item found. remove it now
-  //       const newItems = state.items.filter((item) => item.id !== id);
-  //       const newState = {
-  //         ...state,
-  //         items: newItems,
-  //       };
-  //       return newState;
-  //     } else {
-  //       // item not found. return state as it is.
-  //       return state;
-  //     }
-
-  //   default:
-  //     // return state as is.
-  //     return initialState;
-  // }
+      return newState;
+    } else {
+      return state;
+    }
+  }
 };
 
 const CartProvider = (props) => {

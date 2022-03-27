@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../../store/cart-context";
 
 import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
   const { item, qty, setQty } = props;
+  const cartContext = useContext(CartContext);
 
   const price = `$${item.price}`;
 
@@ -15,6 +17,18 @@ const CartItem = (props) => {
 
   const increaseQtyHandler = () => {
     setQty(qty + 1);
+  };
+
+  const removeCartItemHandler = () => {
+    cartContext.removeItem(item.id);
+  };
+
+  const cartItemHandler = () => {
+    if (qty > 1) {
+      decreaseQtyHandler();
+    } else {
+      removeCartItemHandler();
+    }
   };
 
   return (
@@ -29,21 +43,9 @@ const CartItem = (props) => {
         <span className={classes.price}>{price}</span>
       </div>
       <div className={classes.actions}>
-        <button
-          onClick={() => {
-            decreaseQtyHandler();
-          }}
-        >
-          -
-        </button>
+        <button onClick={cartItemHandler}>-</button>
         <p>{qty}</p>
-        <button
-          onClick={() => {
-            increaseQtyHandler();
-          }}
-        >
-          +
-        </button>
+        <button onClick={increaseQtyHandler}>+</button>
       </div>
     </div>
   );

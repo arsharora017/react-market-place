@@ -1,0 +1,28 @@
+.cart-wrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 12px;
+  background-color: whitesmoke;
+  box-shadow: 0px 2px 10px beige;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.shop-cart {
+  margin: 5px;
+  border-bottom: 2px solid rgb(2, 77, 2);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.amount-wrapper {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+  display: flex;
+  justify-content: right;
+}
