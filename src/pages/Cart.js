@@ -10,6 +10,20 @@ const Cart = (props) => {
     cartContext.addItem({ ...item, qty: qty });
   };
 
+  // Items:
+ /*
+[ 
+  {
+    price: 8,
+    qty: 3
+  }, 
+  {
+    price: 15,
+    qty: 5
+  } 
+]
+ */
+
   const addToShoppingCart = cartContext.items.map((item) => (
     <CartItem
       item={item}
@@ -18,21 +32,32 @@ const Cart = (props) => {
     />
   ));
 
-  let inputArray = addToShoppingCart;
 
-  let priceArray = inputArray.map((item) => item.props.item.price);
-  let qtyArray = inputArray.map((item) => item.props.qty);
+let totalAmountNumber = 0;
+let totalAmount;
+for (let i = 0; i < cartContext.items.length; i++) {
+  const item = cartContext.items[i];
+  const totalItemAmount = item.price * item.qty;
+  // console.log('amounts: ', {totalAmount, totalItemAmount})
+  totalAmountNumber = Number((totalAmountNumber + totalItemAmount).toFixed(2))
+  totalAmount = `$${totalAmountNumber}`
+}
 
-  const arrayProductAndSum = (priceArray = [], qtyArray = []) => {
-    let sum = 0;
-    for (let i = 0; i < priceArray.length; i++) {
-      const arrayProduct = priceArray[i] * qtyArray[i];
-      sum += arrayProduct;
-    }
-    return sum;
-  };
+/*
+i=0
+initially totalItemAmount: null
+totalItemAmount: 8*3 = 24
+totalAmount: 0 + 24 = 24
 
-  const totalAmount = `$${arrayProductAndSum(priceArray, qtyArray).toFixed(2)}`;
+i=1
+initially totalItemAmount: 24
+totalIemAmount: 15*5 = 75
+totalAmount: 75 + 24 = 99
+
+
+*/
+
+ 
 
   return (
     <div className={classes["cart-wrapper"]}>
@@ -41,7 +66,7 @@ const Cart = (props) => {
       </div>
       {addToShoppingCart}
       <div className={classes["amount-wrapper"]}>
-        <span>Total Amount: </span>
+        <span>Total Amount:&nbsp;</span>
         <span>{totalAmount}</span>
       </div>
     </div>

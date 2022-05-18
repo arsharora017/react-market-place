@@ -19,7 +19,7 @@ const NavBar = (props) => {
   return (
     <div className={classes["navbar"]}>
       <NavLink to="/LandingPage">Home</NavLink>
-      <NavLink to="/About">About</NavLink>
+      {/* <NavLink to="/About">About</NavLink> */}
       <NavLink to="/SignIn">Sign In</NavLink>
       <NavLink to="/Cart">
         <SecondaryButton
